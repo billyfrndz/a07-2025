@@ -1,0 +1,19 @@
+services:
+  vulnerable-app:
+    build: ./vulnerable
+    container_name: a07-vulnerable
+    ports:
+      - "3001:3000"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=development
+
+  secure-app:
+    build: ./secure
+    container_name: a07-secure
+    ports:
+      - "3002:3000"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - SESSION_SECRET=c28f09d84bf41d99df8939c3e9a7e02e1b
